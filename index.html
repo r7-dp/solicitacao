@@ -296,48 +296,48 @@ document.getElementById("btn-enviar").addEventListener("click", () => {
   const getV = id => document.getElementById(id).value.toUpperCase();
   const getD = id => { const v = document.getElementById(id).value; if(!v) return ""; const [a,m,d] = v.split("-"); return `${d}/${m}/${a}`; };
   
-  let m = `### 📄 SOLICITAÇÃO DE DEPARTAMENTO PESSOAL - R7\n\n`;
-  m += `#### 🏢 IDENTIFICAÇÃO\n`;
-  m += `- **EMPRESA:** ${getV('razao')}\n`;
-  m += `- **CNPJ:** ${getV('cnpj')}\n`;
-  m += `- **UNIDADE:** ${getV('unidade')}\n`;
-  m += `- **FUNCIONÁRIO:** ${getV('nome')} (MATRÍCULA: ${getV('matricula')})\n`;
-  m += `- **CPF:** ${getV('cpf')}\n`;
-  m += `- **DATA ADMISSÃO:** ${getD('data-adm')}\n\n`;
+  let m = `# Solicitação de Departamento Pessoal - R7\n\n`;
+  m += `## Identificação\n`;
+  m += `- Empresa: ${getV('razao')}\n`;
+  m += `- CNPJ: ${getV('cnpj')}\n`;
+  m += `- Unidade: ${getV('unidade')}\n`;
+  m += `- Funcionário: ${getV('nome')} (Matrícula: ${getV('matricula')})\n`;
+  m += `- CPF: ${getV('cpf')}\n`;
+  m += `- Data Admissão: ${getD('data-adm')}\n\n`;
   
   const aba = document.querySelector(".tab-btn.ativo").dataset.tab;
-  m += `#### 📂 TIPO: ${aba.toUpperCase()}\n`;
+  m += `## Tipo: ${aba.toUpperCase()}\n`;
   
   if(aba === "admissao") {
-    m += `- **CARGO:** ${getV('adm-cargo')}\n`;
-    m += `- **PRAZO EXPERIÊNCIA:** ${getV('adm-prazo')} DIAS\n`;
-    m += `\n**🕒 HORÁRIO DE TRABALHO:**\n`;
+    m += `- Cargo: ${getV('adm-cargo')}\n`;
+    m += `- Prazo Experiência: ${getV('adm-prazo')} dias\n`;
+    m += `\n### Horário de Trabalho\n`;
     document.querySelectorAll(".h-row").forEach(row => {
       const dia = row.dataset.dia;
       const ent = row.querySelector(".h-ent").value;
       const sai = row.querySelector(".h-sai").value;
       const int = row.querySelector(".h-int").value.toUpperCase();
-      if(ent || sai) m += `- ${dia}: ${ent} ÀS ${sai} (INTERVALO: ${int})\n`;
+      if(ent || sai) m += `- ${dia}: ${ent} às ${sai} (Intervalo: ${int})\n`;
     });
-    m += `\n**📋 DOCUMENTOS ENTREGUES:**\n`;
+    m += `\n### Documentos Entregues\n`;
     document.querySelectorAll("#adm-docs input:checked").forEach(ck => {
       m += `- [x] ${ck.value}\n`;
     });
-    m += `\n- **OBSERVAÇÕES:** ${getV('adm-obs')}\n`;
+    m += `\n- Observações: ${getV('adm-obs')}\n`;
   } else if(aba === "desligamento") {
-    m += `- **DATA DO AVISO:** ${getD('des-data-aviso')}\n`;
-    m += `- **ÚLTIMO DIA TRABALHADO:** ${getD('des-ultimo-dia')}\n`;
-    m += `- **MOTIVO:** ${getV('des-motivo')}\n`;
-    m += `- **APONTAMENTOS:** ${getV('des-apontamentos')}\n`;
-    m += `- **OBSERVAÇÕES:** ${getV('des-obs')}\n`;
+    m += `- Data do Aviso: ${getD('des-data-aviso')}\n`;
+    m += `- Último Dia Trabalhado: ${getD('des-ultimo-dia')}\n`;
+    m += `- Motivo: ${getV('des-motivo')}\n`;
+    m += `- Apontamentos: ${getV('des-apontamentos')}\n`;
+    m += `- Observações: ${getV('des-obs')}\n`;
   } else if(aba === "ferias") {
-    m += `- **DATA INÍCIO:** ${getD('fer-inicio')}\n`;
-    m += `- **DIAS:** ${getV('fer-dias')}\n`;
-    m += `- **DATA RETORNO:** ${document.getElementById("fer-retorno").value}\n`;
-    m += `- **ABONO PECUNIÁRIO:** ${document.querySelector('input[name="fer-abono"]:checked').value}\n`;
-    m += `- **OBSERVAÇÕES:** ${getV('fer-obs')}\n`;
+    m += `- Data Início: ${getD('fer-inicio')}\n`;
+    m += `- Dias: ${getV('fer-dias')}\n`;
+    m += `- Data Retorno: ${document.getElementById("fer-retorno").value}\n`;
+    m += `- Abono Pecuniário: ${document.querySelector('input[name="fer-abono"]:checked').value}\n`;
+    m += `- Observações: ${getV('fer-obs')}\n`;
   } else {
-    m += `- **DETALHES:** ${getV('outros-texto')}\n`;
+    m += `- Detalhes: ${getV('outros-texto')}\n`;
   }
 
   document.getElementById("saida-texto").value = m;
