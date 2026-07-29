@@ -8,103 +8,150 @@
 <style>
 :root{
   --primary:#8a6a1f; --primary-dark:#5c4713; --secondary:#c9a227; --on-primary:#ffffff;
-  --brand-grey:#4d4d4d; --brand-grey-dark:#2e2e2e;
-  --surface:#ffffff; --surface-container-low:#f5f3ee; --surface-container:#efece4;
-  --surface-container-high:#e7e2d6; --outline:#79746a; --outline-variant:#d3cdbd;
-  --on-surface:#242220; --on-surface-variant:#524d43; --error:#ba1a1a; --on-error:#ffffff;
+  --brand-grey:#3a3a3a; --brand-grey-dark:#1f1f1f;
+  --surface:#ffffff; --surface-container-low:#f4f5f7; --surface-container:#eef0f3;
+  --surface-container-high:#e7e9ed; --outline:#cbd1d8; --outline-variant:#dfe3e8;
+  --on-surface:#1a1d21; --on-surface-variant:#524d43; --error:#d32f2f; --on-error:#ffffff;
   --error-container:#ffdad6; --on-error-container:#93000a; --success:#0f7b3c; --success-bg:#e3f6ea;
 }
-*{ box-sizing:border-box; margin:0; padding:0; text-transform: uppercase; }
+*{ box-sizing:border-box; margin:0; padding:0; }
 body{
   background-color:var(--surface-container-low);
   font-family:'Libre Franklin', 'Segoe UI', Arial, sans-serif;
-  color:var(--on-surface); font-size:13px; padding-bottom:40px;
+  color:var(--on-surface); font-size:14px; padding-bottom:40px;
 }
+
+/* Removido uppercase global para melhor UX de digitação. 
+   Aplicado seletivamente nos elementos necessários */
 button, input, select, textarea{ font-family:inherit; font-size:inherit; color:inherit; }
-label{ display:block; margin-bottom:3px; font-size:11px; font-weight:700; color:var(--on-surface-variant); }
+label{ display:block; margin-bottom:6px; font-size:11px; font-weight:700; color:var(--on-surface-variant); text-transform:uppercase; letter-spacing:0.4px; }
+label .obrigatorio{ color:var(--error); }
 
+/* HEADER */
 .app-header{
-  position:sticky; top:0; z-index:50; height:44px; padding:0 14px;
+  position:sticky; top:0; z-index:50; height:56px; padding:0 24px;
   display:flex; align-items:center; justify-content:space-between;
-  background:linear-gradient(180deg, var(--brand-grey) 0%, var(--brand-grey-dark) 100%);
-  border-bottom:2px solid var(--secondary); box-shadow: inset 0 1px 0 rgba(255,255,255,0.15); color:#fff;
+  background:var(--brand-grey-dark); color:#fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
-.app-header .brand{ display:flex; align-items:center; gap:9px; font-weight:700; font-size:13px; }
-.app-header .brand img{ height:30px; width:auto; }
-.app-header .brand span{ color:var(--secondary); letter-spacing:.2px; }
+.app-header .brand{ display:flex; align-items:center; gap:12px; font-weight:700; font-size:15px; letter-spacing:0.5px; text-transform:uppercase; }
+.app-header .brand span{ color:var(--secondary); }
 
+/* TABS */
 .tabs-bar{
-  position:sticky; top:44px; z-index:49; display:flex; gap:2px; background:var(--surface-container-high);
-  border-bottom:1px solid var(--outline-variant); padding:0 14px; overflow-x:auto;
+  position:sticky; top:56px; z-index:49; display:flex; gap:4px; background:var(--surface);
+  border-bottom:1px solid var(--outline); padding:0 24px; box-shadow: 0 2px 4px rgba(0,0,0,0.03);
 }
 .tab-btn{
-  height:40px; padding:0 18px; border:none; background:transparent; cursor:pointer;
-  font-size:12px; font-weight:700; color:var(--on-surface-variant); white-space:nowrap;
-  border-bottom:3px solid transparent;
+  height:46px; padding:0 20px; border:none; background:transparent; cursor:pointer;
+  font-size:12px; font-weight:700; color:var(--on-surface-variant); white-space:nowrap; text-transform:uppercase;
+  border-bottom:3px solid transparent; transition: all 0.2s ease;
 }
-.tab-btn.ativo{ color:var(--primary); border-bottom-color:var(--primary); background:var(--surface); }
+.tab-btn:hover { color: var(--primary); background: var(--surface-container-low); }
+.tab-btn.ativo{ color:var(--primary-dark); border-bottom-color:var(--primary); }
 
-.main-container{ width:850px; max-width:100%; margin:0 auto; padding:15px; }
+/* LAYOUT */
+.main-container{ width:900px; max-width:100%; margin:24px auto; padding:0 16px; }
 
+/* GROUP BOX MODERNIZADO */
 .group-box{
-  background:var(--surface); border:1px solid var(--outline-variant); border-radius:5px;
-  margin-top:16px; box-shadow:0 1px 2px rgba(0,0,0,0.05); overflow:hidden;
+  background:var(--surface); border:1px solid var(--outline-variant); border-radius:12px;
+  margin-top:20px; box-shadow:0 4px 12px rgba(0,0,0,0.04); overflow:hidden;
 }
 .group-box-bar{
-  height:32px; padding:0 14px; display:flex; align-items:center;
-  background:linear-gradient(180deg, var(--secondary) 0%, var(--primary) 100%); color:#fff;
-  font-size:12px; font-weight:700;
+  padding:14px 20px; display:flex; align-items:center; gap:10px;
+  background:var(--surface-container); color:var(--brand-grey-dark);
+  font-size:13px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase;
+  border-bottom:1px solid var(--outline-variant);
+  border-left:5px solid var(--primary); /* Detalhe moderno */
 }
-.group-box-body{ padding:15px; }
+.group-box-body{ padding:24px 20px; }
 
-.grid{ display:grid; gap:12px 15px; grid-template-columns:repeat(12, 1fr); }
-.c-2{ grid-column:span 2; } .c-3{ grid-column:span 3; } .c-4{ grid-column:span 4; } .c-5{ grid-column:span 5; } .c-6{ grid-column:span 6; } .c-7{ grid-column:span 7; } .c-10{ grid-column:span 10; } .c-12{ grid-column:span 12; }
-.stack{ display:flex; flex-direction:column; gap:2px; }
+/* GRID E INPUTS */
+.grid{ display:grid; gap:18px 20px; grid-template-columns:repeat(12, 1fr); }
+.c-2{ grid-column:span 2; } .c-3{ grid-column:span 3; } .c-4{ grid-column:span 4; } .c-5{ grid-column:span 5; } .c-6{ grid-column:span 6; } .c-7{ grid-column:span 7; } .c-8{ grid-column:span 8; } .c-10{ grid-column:span 10; } .c-12{ grid-column:span 12; }
+.stack{ display:flex; flex-direction:column; gap:0; }
 
 .input-standard{
-  height:34px; border:1px solid var(--outline-variant); padding:0 10px;
-  border-radius:4px; width:100%; background:#fff;
+  height:42px; border:1px solid var(--outline); padding:0 14px;
+  border-radius:8px; width:100%; background:#fff; transition: all 0.2s ease;
+  color: var(--on-surface);
 }
-.input-standard:focus{ outline:none; border-color:var(--primary); box-shadow:0 0 0 2px rgba(138,106,31,0.2); }
-textarea.input-standard{ height:auto; min-height:70px; padding:8px 10px; resize:vertical; }
+.input-standard:focus{ outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(138,106,31,0.15); }
+textarea.input-standard{ height:auto; min-height:80px; padding:12px 14px; resize:vertical; }
 
-.horario-tabela { width: 100%; border-collapse: collapse; margin-top: 5px; }
-.horario-tabela th, .horario-tabela td { border: 1px solid var(--outline-variant); padding: 6px; text-align: center; }
-.horario-tabela th { background: var(--surface-container); font-size: 10px; }
+/* TABELA HORÁRIO */
+.horario-tabela { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 6px; border: 1px solid var(--outline-variant); border-radius: 8px; overflow: hidden; }
+.horario-tabela th, .horario-tabela td { border-bottom: 1px solid var(--outline-variant); padding: 8px; text-align: center; }
+.horario-tabela tr:last-child td { border-bottom: none; }
+.horario-tabela th { background: var(--surface-container); font-size: 11px; font-weight: 700; color: var(--on-surface-variant); text-transform: uppercase; }
+.horario-tabela .input-standard { height: 36px; border-radius: 6px; }
 
-.checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
-.check-item { display: flex; align-items: center; gap: 8px; font-size: 11px; padding: 6px; border: 1px solid var(--outline-variant); border-radius: 4px; cursor: pointer; }
-.check-item input { width: 16px; height: 16px; accent-color: var(--primary); }
+/* CHECKLIST MODERNIZADO */
+.checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+.check-item { 
+  display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; text-transform: uppercase; 
+  padding: 12px 14px; border: 1.5px solid var(--outline-variant); border-radius: 8px; cursor: pointer; 
+  transition: all 0.2s ease; background: #fff; color: var(--on-surface-variant);
+}
+.check-item:hover{ border-color: var(--secondary); background: var(--surface-container-low); transform: translateY(-1px); }
+.check-item:has(input:checked), .check-item.marcado{ 
+  border-color: var(--primary); background: #fffae6; color: var(--primary-dark); box-shadow: 0 2px 6px rgba(138,106,31,0.1); 
+}
+.check-item input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
 
-.radio-row{ display:flex; align-items:center; gap:20px; margin-top:5px; }
-.radio-item{ display:flex; align-items:center; gap:6px; font-size:12px; cursor:pointer; }
+.radio-row{ display:flex; align-items:center; gap:24px; margin-top:8px; background: #fff; padding: 10px 14px; border: 1.5px solid var(--outline-variant); border-radius: 8px; height: 42px; }
+.radio-item{ display:flex; align-items:center; gap:8px; font-size:13px; cursor:pointer; font-weight: 600; }
+.radio-item input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
 
+/* ACTION BAR E BUTTONS */
 .action-bar{
-  margin-top:20px; padding-top:15px; border-top:1px solid var(--outline-variant);
+  margin-top:28px; padding:20px 0; border-top:1px solid var(--outline-variant);
   display:flex; justify-content:space-between;
 }
 .btn{
-  height:38px; padding:0 20px; border-radius:4px; font-size:12px; font-weight:700;
-  cursor:pointer; border:1px solid var(--outline-variant); background:#f5f5f5; color:var(--primary);
+  height:44px; padding:0 28px; border-radius:8px; font-size:13px; font-weight:700; text-transform: uppercase; letter-spacing: 0.5px;
+  cursor:pointer; border:1px solid var(--outline-variant); background:#fff; color:var(--brand-grey-dark); transition: all 0.2s ease;
 }
-.btn-primary{ background:var(--primary); color:#fff; border-color:var(--primary-dark); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 4px 8px rgba(0,0,0,0.06); }
+.btn-primary{ background:var(--primary); color:#fff; border-color:var(--primary-dark); box-shadow: 0 4px 12px rgba(92, 71, 19, 0.2); }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-perigo{ background:#fff; color:var(--error); border-color:var(--error); }
+.btn-perigo:hover{ background:var(--error); color:#fff; }
 
+.campo-invalido{ border-color:var(--error) !important; box-shadow:0 0 0 3px rgba(211,47,47,0.15) !important; background-color: #fff0f0; }
+
+/* STATUS BAR */
 .status-bar{
-  position:fixed; bottom:0; left:0; width:100%; height:26px;
-  background:var(--surface-container-high); border-top:1px solid var(--outline-variant);
-  display:flex; align-items:center; justify-content:space-between; padding:0 14px; font-size:10px;
+  position:fixed; bottom:0; left:0; width:100%; height:30px;
+  background:var(--brand-grey-dark); color: #ccc;
+  display:flex; align-items:center; justify-content:space-between; padding:0 24px; font-size:11px;
 }
+.status-bar .msg{ color:var(--secondary); font-weight:700; }
 
-.modal-fundo{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:100; align-items:center; justify-content:center; }
-.modal-frame{ background:#fff; width:600px; max-width:95%; max-height:90vh; border-radius:6px; display:flex; flex-direction:column; overflow:hidden; }
-.modal-body{ padding:15px; overflow-y:auto; }
-#saida-texto{ width:100%; min-height:300px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding:15px; border:1px solid var(--outline-variant); text-transform: none; line-height: 1.5; white-space: pre-wrap; }
+/* MODAL */
+.modal-fundo{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:100; align-items:center; justify-content:center; backdrop-filter: blur(3px); }
+.modal-frame{ background:#fff; width:700px; max-width:95%; max-height:90vh; border-radius:12px; display:flex; flex-direction:column; overflow:hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
+.modal-frame .barra{ height:52px; padding:0 20px; display:flex; align-items:center; justify-content:space-between; background:var(--brand-grey-dark); color:#fff; font-weight: 700; text-transform: uppercase; font-size: 14px; }
+.modal-frame .barra button{ background:none; border:none; color:#fff; font-size:24px; cursor:pointer; line-height:1; transition: 0.2s; }
+.modal-frame .barra button:hover { color: var(--error); }
+.modal-body{ padding:24px; overflow-y:auto; }
+#saida-texto{ width:100%; min-height:320px; font-family:'Consolas', 'Courier New', monospace; padding:16px; border:1px solid var(--outline); border-radius:8px; line-height: 1.6; white-space: pre-wrap; background: var(--surface-container-low); color: var(--brand-grey-dark); resize: vertical; }
 
 .oculto{ display:none !important; }
+
+/* ALERTS (Limpos e modernos) */
+.alert{ margin-top:12px; padding:12px 16px; border-radius:8px; font-size:12px; line-height:1.5; display:flex; gap:10px; align-items:flex-start; font-weight:600; }
+.alert-warning{ background:var(--error-container); border:1px solid rgba(211,47,47,0.3); color:var(--on-error-container); }
+.alert-info{ background:#fffae6; border:1px solid rgba(138,106,31,0.3); color:var(--primary-dark); }
+.alert-info strong { display: block; margin-bottom: 4px; font-size: 13px; }
 
 @media (max-width:768px){
   .grid > div { grid-column: span 12; }
   .checklist { grid-template-columns: 1fr; }
+  .app-header { padding: 0 16px; }
+  .tabs-bar { padding: 0 8px; overflow-x: auto; }
+  .tab-btn { padding: 0 12px; }
 }
 </style>
 </head>
@@ -112,143 +159,173 @@ textarea.input-standard{ height:auto; min-height:70px; padding:8px 10px; resize:
 
 <header class="app-header">
   <div class="brand">
-       <span>R7 SERVIÇOS CONTÁBEIS E ADMINISTRATIVOS</span>
+    <span>R7 SERVIÇOS CONTÁBEIS E ADMINISTRATIVOS</span>
   </div>
 </header>
 
 <nav class="tabs-bar">
-  <button class="tab-btn ativo" data-tab="admissao">ADMISSÃO</button>
-  <button class="tab-btn" data-tab="desligamento">DESLIGAMENTO</button>
-  <button class="tab-btn" data-tab="ferias">FÉRIAS</button>
-  <button class="tab-btn" data-tab="outros">OUTROS</button>
+  <button class="tab-btn ativo" data-tab="admissao">Admissão</button>
+  <button class="tab-btn" data-tab="desligamento">Desligamento</button>
+  <button class="tab-btn" data-tab="ferias">Férias</button>
+  <button class="tab-btn" data-tab="outros">Outros</button>
 </nav>
 
 <div class="main-container">
+  
+  <!-- BOX PRINCIPAL -->
   <section class="group-box">
-    <div class="group-box-bar">IDENTIFICAÇÃO DA EMPRESA E FUNCIONÁRIO</div>
+    <div class="group-box-bar">Identificação da Empresa e Funcionário</div>
     <div class="group-box-body">
       <div class="grid">
         <div class="c-4 stack"><label>CNPJ</label><input type="text" class="input-standard mask-cnpj" id="cnpj"></div>
-        <div class="c-4 stack"><label>RAZÃO SOCIAL</label><input type="text" class="input-standard" id="razao"></div>
-        <div class="c-4 stack"><label>UNIDADE</label><input type="text" class="input-standard" id="unidade"></div>
-        <div class="c-10 stack"><label>NOME DO FUNCIONÁRIO</label><input type="text" class="input-standard" id="nome"></div>
-        <div class="c-2 stack"><label>MATRÍCULA</label><input type="text" class="input-standard" id="matricula" style="font-size: 11px;"></div>
-        <div class="c-4 stack"><label>CPF (OPCIONAL)</label><input type="text" class="input-standard mask-cpf" id="cpf"></div>
-        <div class="c-8 stack"><label>DATA DE ADMISSÃO</label><input type="date" class="input-standard" id="data-adm"></div>
+        <div class="c-4 stack"><label>Razão Social</label><input type="text" class="input-standard" id="razao"></div>
+        <div class="c-4 stack"><label>Unidade</label><input type="text" class="input-standard" id="unidade"></div>
+        <div class="c-10 stack"><label>Nome do Funcionário <span class="obrigatorio">*</span></label><input type="text" class="input-standard" id="nome"></div>
+        <div class="c-2 stack"><label>Matrícula</label><input type="text" class="input-standard" id="matricula" style="font-size: 12px;"></div>
+        <div class="c-4 stack"><label>CPF (Opcional)</label><input type="text" class="input-standard mask-cpf" id="cpf"></div>
+        <div class="c-8 stack"><label>Data de Admissão <span class="obrigatorio">*</span></label><input type="date" class="input-standard" id="data-adm"></div>
       </div>
     </div>
   </section>
 
+  <!-- ABA ADMISSÃO -->
   <div class="tab-panel" data-panel="admissao">
     <section class="group-box">
-      <div class="group-box-bar">DETALHES DA ADMISSÃO</div>
+      <div class="group-box-bar">Detalhes da Admissão</div>
       <div class="group-box-body">
-        <div class="grid">
-          <div class="c-6 stack"><label>CARGO</label><input type="text" class="input-standard" id="adm-cargo"></div>
-          <div class="c-6 stack"><label>PRAZO EXPERIÊNCIA (DIAS)</label><input type="number" class="input-standard" id="adm-prazo"></div>
+        <div class="alert alert-warning oculto" id="adm-alerta-dataretro">
+          ⚠ A data de admissão informada já passou. Confirme se o registro no eSocial/CTPS Digital já foi enviado — Registros em atraso podem gerar multa (Art. 47, CLT).
+        </div>
+        <div class="grid" style="margin-top: 18px;">
+          <div class="c-6 stack"><label>Cargo</label><input type="text" class="input-standard" id="adm-cargo"></div>
+          <div class="c-6 stack"><label>Prazo Experiência (Dias)</label><input type="number" class="input-standard" id="adm-prazo" value="90"></div>
+          
           <div class="c-12">
-            <label>HORÁRIO DE TRABALHO</label>
+            <div class="alert alert-info">
+              <div>
+                <strong>⚠ Atenção:</strong>
+                Em caso de prorrogação do contrato de experiência, envie a solicitação ao escritório antes do término do período inicial. O somatório dos dois períodos não pode ultrtrapassar 90 dias (Art. 443, CLT).
+              </div>
+            </div>
+          </div>
+          
+          <div class="c-12">
+            <label>Horário de Trabalho</label>
             <table class="horario-tabela">
-              <thead><tr><th>PERÍODO</th><th>ENTRADA</th><th>SAÍDA</th><th>INTERVALO (min)</th></tr></thead>
+              <thead><tr><th>Período</th><th>Entrada</th><th>Saída</th><th>Intervalo (min)</th></tr></thead>
               <tbody>
                 <tr class="h-row" data-dia="SEG A SEX"><td>SEG A SEX</td><td><input type="time" class="input-standard h-ent"></td><td><input type="time" class="input-standard h-sai"></td><td><input type="text" class="input-standard h-int"></td></tr>
                 <tr class="h-row" data-dia="SÁBADO"><td>SÁBADO</td><td><input type="time" class="input-standard h-ent"></td><td><input type="time" class="input-standard h-sai"></td><td><input type="text" class="input-standard h-int"></td></tr>
               </tbody>
             </table>
           </div>
+          
           <div class="c-12">
-            <label>RELAÇÃO DE DOCUMENTOS ENTREGUES</label>
+            <label>Relação de Documentos Entregues</label>
             <div class="checklist" id="adm-docs">
-              <label class="check-item"><input type="checkbox" value="RG/CPF OU CNH"> FICHA DE CASDASTRO</label>
-			  <label class="check-item"><input type="checkbox" value="RG/CPF OU CNH"> CPF OU CNH</label>
-              <label class="check-item"><input type="checkbox" value="CARTEIRA DE TRABALHO"> CARTEIRA DE TRABALHO</label>
-              <label class="check-item"><input type="checkbox" value="COMPR. RESIDÊNCIA"> COMPR. RESIDÊNCIA (com CEP)</label>
-              <label class="check-item"><input type="checkbox" value="CERT. NASC/CASAMENTO"> CERT. NASC/CASAMENTO</label>
-              <label class="check-item"><input type="checkbox" value="TÍTULO ELEITOR"> TÍTULO ELEITOR</label>
-              <label class="check-item"><input type="checkbox" value="DOCS DEPENDENTES"> DOCS DEPENDENTES</label>
-              <label class="check-item"><input type="checkbox" value="EXAME ADMISSIONAL"> EXAME ADMISSIONAL</label>
+              <label class="check-item"><input type="checkbox" value="FICHA DE CADASTRO"> Ficha de Cadastro</label>
+              <label class="check-item"><input type="checkbox" value="CPF OU CNH"> CPF ou CNH</label>
+              <label class="check-item"><input type="checkbox" value="FOTO 3X4"> Foto 3x4 (Recente)</label>
+              <label class="check-item"><input type="checkbox" value="CARTEIRA DE TRABALHO"> Carteira de Trabalho</label>
+              <label class="check-item"><input type="checkbox" value="COMPR. RESIDÊNCIA"> Compr. Residência (com CEP)</label>
+              <label class="check-item"><input type="checkbox" value="CERT. NASC/CASAMENTO"> Cert. Nasc/Casamento</label>
+              <label class="check-item"><input type="checkbox" value="TÍTULO ELEITOR"> Título Eleitor</label>
+              <label class="check-item"><input type="checkbox" value="DOCS DEPENDENTES"> Docs Dependentes</label>
+              <label class="check-item"><input type="checkbox" value="EXAME ADMISSIONAL"> Exame Admissional</label>
             </div>
           </div>
-          <div class="c-12 stack"><label>OBSERVAÇÕES</label><textarea class="input-standard" id="adm-obs"></textarea></div>
+          
+          <div class="c-12 stack"><label>Observações</label><textarea class="input-standard" id="adm-obs"></textarea></div>
         </div>
       </div>
     </section>
   </div>
 
+  <!-- ABA DESLIGAMENTO -->
   <div class="tab-panel oculto" data-panel="desligamento">
     <section class="group-box">
-      <div class="group-box-bar">DETALHES DO DESLIGAMENTO</div>
+      <div class="group-box-bar">Detalhes do Desligamento</div>
       <div class="group-box-body">
         <div class="grid">
-          <div class="c-6 stack"><label>DATA DO AVISO</label><input type="date" class="input-standard" id="des-data-aviso"></div>
-          <div class="c-6 stack"><label>ÚLTIMO DIA TRABALHADO</label><input type="date" class="input-standard" id="des-ultimo-dia"></div>
+          <div class="c-6 stack"><label>Data do Aviso</label><input type="date" class="input-standard" id="des-data-aviso"></div>
+          <div class="c-6 stack"><label>Último Dia Trabalhado</label><input type="date" class="input-standard" id="des-ultimo-dia"></div>
           <div class="c-12 stack">
-            <label>QUEM TOMOU A DECISÃO?</label>
+            <label>Motivo do Desligamento</label>
             <select class="input-standard" id="des-motivo">
-              <option value="O FUNCIONÁRIO PEDIU PARA SAIR">O FUNCIONÁRIO PEDIU PARA SAIR</option>
-              <option value="A EMPRESA DECIDIU DISPENSAR O FUNCIONÁRIO">A EMPRESA DISPENSOU O FUNCIONÁRIO</option>
-              <option value="A EMPRESA DISPENSOU POR JUSTA CAUSA (FALTA GRAVE)">A EMPRESA DISPENSOU POR JUSTA CAUSA (FALTA GRAVE)</option>
-              <option value="FOI UM ACORDO ENTRE A EMPRESA E O FUNCIONÁRIO">FOI UM ACORDO ENTRE A EMPRESA E O FUNCIONÁRIO</option>
-              <option value="TERMINOU O PERÍODO DE EXPERIÊNCIA">TERMINOU O PERÍODO DE EXPERIÊNCIA</option>
-              <option value="OUTRO MOTIVO (EXPLIQUE NAS OBSERVAÇÕES)">OUTRO MOTIVO (EXPLIQUE NAS OBSERVAÇÕES)</option>
+              <option value="PEDIDO DE DEMISSÃO">Pedido de Demissão</option>
+              <option value="DISPENSA SEM JUSTA CAUSA">Dispensa sem Justa Causa</option>
+              <option value="DISPENSA POR JUSTA CAUSA (ART. 482, CLT)">Dispensa por Justa Causa (Art. 482, CLT)</option>
+              <option value="RESCISÃO POR ACORDO (ART. 484-A, CLT)">Rescisão por Acordo (Art. 484-A, CLT)</option>
+              <option value="TÉRMINO DE CONTRATO DE EXPERIÊNCIA">Término de Contrato de Experiência</option>
+              <option value="RESCISÃO INDIRETA (ART. 483, CLT)">Rescisão Indireta (Art. 483, CLT)</option>
+              <option value="OUTRO MOTIVO (EXPLIQUE NAS OBSERVAÇÕES)">Outro Motivo (Explique nas Observações)</option>
             </select>
           </div>
-          <div class="c-12 stack"><label>APONTAMENTOS (FALTAS, ATRASOS, VARIÁVEIS)</label><textarea class="input-standard" id="des-apontamentos"></textarea></div>
-          <div class="c-12 stack"><label>OBSERVAÇÕES</label><textarea class="input-standard" id="des-obs"></textarea></div>
+          <div class="c-12 stack"><label>Apontamentos (Faltas, Atrasos, Variáveis)</label><textarea class="input-standard" id="des-apontamentos"></textarea></div>
+          <div class="c-12 stack"><label>Observações</label><textarea class="input-standard" id="des-obs"></textarea></div>
         </div>
       </div>
     </section>
   </div>
 
+  <!-- ABA FÉRIAS -->
   <div class="tab-panel oculto" data-panel="ferias">
     <section class="group-box">
-      <div class="group-box-bar">SOLICITAÇÃO DE FÉRIAS</div>
+      <div class="group-box-bar">Solicitação de Férias</div>
       <div class="group-box-body">
         <div class="grid">
-          <div class="c-6 stack"><label>DATA DE INÍCIO</label><input type="date" class="input-standard" id="fer-inicio"></div>
-          <div class="c-6 stack"><label>QUANTIDADE DE DIAS</label><input type="number" class="input-standard" id="fer-dias" value="30"></div>
-          <div class="c-6 stack"><label>DATA DE RETORNO (CÁLCULO AUTOMÁTICO)</label><input type="text" class="input-standard" id="fer-retorno" readonly></div>
+          <div class="c-6 stack"><label>Data de Início</label><input type="date" class="input-standard" id="fer-inicio"></div>
+          <div class="c-6 stack"><label>Quantidade de Dias</label><input type="number" class="input-standard" id="fer-dias" value="30"></div>
+          <div class="c-6 stack"><label>Data de Retorno (Cálculo Automático)</label><input type="text" class="input-standard" id="fer-retorno" readonly style="background: var(--surface-container-low); cursor: not-allowed;"></div>
           <div class="c-6 stack">
-            <label>ABONO PECUNIÁRIO (VENDER 10 DIAS)?</label>
+            <label>Abono Pecuniário (Vender 10 dias)?</label>
             <div class="radio-row">
-              <label class="radio-item"><input type="radio" name="fer-abono" value="SIM"> SIM</label>
-              <label class="radio-item"><input type="radio" name="fer-abono" value="NÃO" checked> NÃO</label>
+              <label class="radio-item"><input type="radio" name="fer-abono" value="SIM"> Sim</label>
+              <label class="radio-item"><input type="radio" name="fer-abono" value="NÃO" checked> Não</label>
             </div>
           </div>
-          <div class="c-12 stack"><label>OBSERVAÇÕES</label><textarea class="input-standard" id="fer-obs"></textarea></div>
+          <div class="c-12 stack"><label>Observações</label><textarea class="input-standard" id="fer-obs"></textarea></div>
         </div>
       </div>
     </section>
   </div>
 
+  <!-- ABA OUTROS -->
   <div class="tab-panel oculto" data-panel="outros">
     <section class="group-box">
-      <div class="group-box-bar">OUTROS ASSUNTOS</div>
+      <div class="group-box-bar">Outros Assuntos</div>
       <div class="group-box-body">
-        <textarea class="input-standard" id="outros-texto" style="min-height:200px;" placeholder="DESCREVA AQUI SUA SOLICITAÇÃO DETALHADAMENTE..."></textarea>
+        <label>Descreva aqui sua solicitação detalhadamente</label>
+        <textarea class="input-standard" id="outros-texto" style="min-height:250px; margin-top:8px;"></textarea>
       </div>
     </section>
   </div>
 
+  <!-- AÇÕES -->
   <div class="action-bar">
-    <button type="button" class="btn" id="btn-limpar">LIMPAR TUDO</button>
-    <button type="button" class="btn btn-primary" id="btn-enviar">GERAR RESUMO DA SOLICITAÇÃO</button>
+    <button type="button" class="btn btn-perigo" id="btn-limpar">Limpar Tudo</button>
+    <button type="button" class="btn btn-primary" id="btn-enviar">Gerar Resumo da Solicitação</button>
   </div>
 </div>
 
 <footer class="status-bar">
   <div>R7 SERVIÇOS CONTÁBEIS</div>
+  <div class="msg" id="stbar-msg"></div>
   <div id="stbar-data">--/--/----</div>
 </footer>
 
+<!-- MODAL -->
 <div class="modal-fundo" id="modal-resumo">
   <div class="modal-frame">
-    <div class="barra"><span>RESUMO DA SOLICITAÇÃO</span></div>
+    <div class="barra">
+      <span>Resumo da Solicitação</span>
+      <button type="button" id="btn-fechar-x" aria-label="Fechar">&times;</button>
+    </div>
     <div class="modal-body">
       <textarea id="saida-texto" readonly></textarea>
-      <div style="margin-top:15px; display:flex; gap:10px;">
-        <button type="button" class="btn btn-primary" id="btn-copiar">COPIAR TEXTO</button>
-        <button type="button" class="btn" id="btn-fechar">FECHAR</button>
+      <div style="margin-top:20px; display:flex; gap:12px;">
+        <button type="button" class="btn btn-primary" id="btn-copiar">Copiar Texto</button>
+        <button type="button" class="btn" id="btn-fechar">Fechar</button>
       </div>
     </div>
   </div>
@@ -257,6 +334,20 @@ textarea.input-standard{ height:auto; min-height:70px; padding:8px 10px; resize:
 <script>
 "use strict";
 document.getElementById("stbar-data").textContent = new Date().toLocaleDateString('pt-BR');
+
+function mostrarMsgStatus(msg){
+  const el = document.getElementById("stbar-msg");
+  el.textContent = msg;
+  clearTimeout(mostrarMsgStatus._t);
+  mostrarMsgStatus._t = setTimeout(() => { el.textContent = ""; }, 4000);
+}
+
+// DESTAQUE DE DOCUMENTO MARCADO
+document.querySelectorAll(".check-item input[type=checkbox]").forEach(cb => {
+  cb.addEventListener("change", () => {
+    cb.closest(".check-item").classList.toggle("marcado", cb.checked);
+  });
+});
 
 // MÁSCARAS
 function mask(id, fn) {
@@ -289,12 +380,27 @@ function calcFerias() {
 document.getElementById("fer-inicio").addEventListener("change", calcFerias);
 document.getElementById("fer-dias").addEventListener("input", calcFerias);
 
-// GERAR RESUMO PARA EMAIL
+// GERAR RESUMO
 document.getElementById("btn-enviar").addEventListener("click", () => {
-  const getV = id => document.getElementById(id).value.toUpperCase();
+  // Converte para maiúsculo no resumo final (mantendo a tela limpa)
+  const getV = id => (document.getElementById(id).value || '').toUpperCase();
   const getD = id => { const v = document.getElementById(id).value; if(!v) return ""; const [a,m,d] = v.split("-"); return `${d}/${m}/${a}`; };
+
+  document.querySelectorAll('.campo-invalido').forEach(el => el.classList.remove('campo-invalido'));
+
+  const campoNome = document.getElementById('nome');
+  const campoData = document.getElementById('data-adm');
+  let temErro = false;
   
-  // Helper para adicionar linha apenas se houver valor
+  if(!getV('nome').trim()){ campoNome.classList.add('campo-invalido'); temErro = true; }
+  if(!campoData.value){ campoData.classList.add('campo-invalido'); temErro = true; }
+  
+  if(temErro){
+    mostrarMsgStatus("PREENCHA OS CAMPOS OBRIGATÓRIOS (*) DESTACADOS EM VERMELHO.");
+    (getV('nome').trim() ? campoData : campoNome).focus();
+    return;
+  }
+
   const addLinha = (label, val) => val && val.trim() !== '' ? `${label}: ${val}\n` : '';
   
   let txt = `SOLICITAÇÃO DE DEPARTAMENTO PESSOAL - R7 SERVIÇOS CONTÁBEIS\n\n`;
@@ -334,17 +440,13 @@ document.getElementById("btn-enviar").addEventListener("click", () => {
         horariosTxt += `- ${dia}: ${ent} às ${sai} (${int})\n`;
       }
     });
-    if(temHorario) {
-      txt += `\nHorário de Trabalho:\n${horariosTxt}`;
-    }
+    if(temHorario) txt += `\nHorário de Trabalho:\n${horariosTxt}`;
     
     let docsTxt = '';
     document.querySelectorAll("#adm-docs input:checked").forEach(ck => {
       docsTxt += `- ${ck.value}\n`;
     });
-    if(docsTxt) {
-      txt += `\nDocumentos Entregues:\n${docsTxt}`;
-    }
+    if(docsTxt) txt += `\nDocumentos Entregues:\n${docsTxt}`;
     
     txt += addLinha('\nObservações', getV('adm-obs'));
     
@@ -361,7 +463,11 @@ document.getElementById("btn-enviar").addEventListener("click", () => {
     txt += addLinha('Data de Início', getD('fer-inicio'));
     txt += addLinha('Quantidade de Dias', getV('fer-dias'));
     txt += addLinha('Data de Retorno', document.getElementById("fer-retorno").value);
-    txt += addLinha('Abono Pecuniário', document.querySelector('input[name="fer-abono"]:checked').value);
+    
+    // Correção de segurança: verifica se existe um radio marcado antes de pegar o valor
+    const abonoInput = document.querySelector('input[name="fer-abono"]:checked');
+    txt += addLinha('Abono Pecuniário', abonoInput ? abonoInput.value.toUpperCase() : 'NÃO INFORMADO');
+    
     txt += addLinha('Observações', getV('fer-obs'));
     
   } else {
@@ -374,20 +480,50 @@ document.getElementById("btn-enviar").addEventListener("click", () => {
 
   document.getElementById("saida-texto").value = txt;
   document.getElementById("modal-resumo").style.display = "flex";
+  mostrarMsgStatus("RESUMO GERADO COM SUCESSO.");
 });
 
-document.getElementById("btn-copiar").addEventListener("click", () => {
-  document.getElementById("saida-texto").select();
-  document.execCommand("copy");
-  alert("TEXTO COPIADO!");
+// Limpa o aviso de vermelho ao digitar
+['nome','data-adm'].forEach(id => {
+  document.getElementById(id).addEventListener('input', function(){ this.classList.remove('campo-invalido'); });
 });
 
-document.getElementById("btn-fechar").addEventListener("click", () => {
-  document.getElementById("modal-resumo").style.display = "none";
+// COPIAR TEXTO
+document.getElementById("btn-copiar").addEventListener("click", function(){
+  const campo = document.getElementById("saida-texto");
+  const texto = campo.value;
+  const btn = this;
+  const original = btn.textContent;
+  const confirmar = () => {
+    btn.textContent = "✓ COPIADO!";
+    mostrarMsgStatus("TEXTO COPIADO PARA A ÁREA DE TRANSFERÊNCIA.");
+    setTimeout(() => { btn.textContent = original; }, 2000);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(texto).then(confirmar).catch(() => {
+      campo.select();
+      document.execCommand("copy");
+      confirmar();
+    });
+  } else {
+    campo.select();
+    document.execCommand("copy");
+    confirmar();
+  }
+});
+
+function fecharModal(){ document.getElementById("modal-resumo").style.display = "none"; }
+document.getElementById("btn-fechar").addEventListener("click", fecharModal);
+document.getElementById("btn-fechar-x").addEventListener("click", fecharModal);
+document.addEventListener("keydown", (e) => {
+  if(e.key === "Escape" && document.getElementById("modal-resumo").style.display === "flex"){
+    fecharModal();
+  }
 });
 
 document.getElementById("btn-limpar").addEventListener("click", () => {
-  if(confirm("LIMPAR TODOS OS DADOS?")) location.reload();
+  if(confirm("DESEJA REALMENTE LIMPAR TODOS OS DADOS DO FORMULÁRIO?")) location.reload();
 });
 </script>
 </body>
+</html>
