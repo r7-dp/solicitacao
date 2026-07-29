@@ -4,7 +4,6 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>R7 SERVIÇOS CONTÁBEIS E ADMINISTRATIVOS | SOLICITAÇÕES</title>
-<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAXjklEQVR4nKVba5BcR3X+zum+M7O70u5aT69syzbIOBZgnIiXnZCVEkIZTOy8RkDiFIaknIoDBYYfCVSK1RDIqyCVgvDDTgivAio7vFJFERNCrCWYcmKLBINkLMuW9bBea892Le3O494+Jz/79p2+M7O2sXur887cvbf7nK/Pu3k67e2NzKoDh4ea8G+aWLtRT7QkAAaLQGVBDMEACpEIWEZQAJASvKI0hMKrMi1qk1UYtCEfF7DGoUqjkjIOMbwoiA/E68mHozkGqYCC0i9Al8FVISRomIhaZQDIVE0SxULF/8p7z1PWDpS8SBGDShh8FwGDdREYmQoo0OaVYyRD/CDlrdBqPRckSbFsK3FIN8SBWQCJZBFYWkJK9pWmS4CIULOQpNQ0EFRC+RGmi90zSmJfKf5jJfPRHfhbeD1oxIkgo6Wo41xZzNbOgJHzYAoDLzMQOFPnLZuHzmYFtnrxpKZYd+eBiJTQU2LQIRTgWjZjpjOGKGVBTsi5lJhAJHU8bXeXLU4fnhtC8gT2SIlLKgVEE0Ppwn8U6h89L5FKKMYtqgtXvI3ZL9tewvS29GVFxjy2q3PdOSPXK4kOfeg4Aeb1u4NqU/QAAAABJRU5ErkJggg=="/>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 :root{
@@ -99,7 +98,7 @@ textarea.input-standard{ height:auto; min-height:70px; padding:8px 10px; resize:
 .modal-fundo{ display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:100; align-items:center; justify-content:center; }
 .modal-frame{ background:#fff; width:600px; max-width:95%; max-height:90vh; border-radius:6px; display:flex; flex-direction:column; overflow:hidden; }
 .modal-body{ padding:15px; overflow-y:auto; }
-#saida-texto{ width:100%; min-height:300px; font-family:monospace; padding:10px; border:1px solid var(--outline-variant); text-transform: none; }
+#saida-texto{ width:100%; min-height:300px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding:15px; border:1px solid var(--outline-variant); text-transform: none; line-height: 1.5; white-space: pre-wrap; }
 
 .oculto{ display:none !important; }
 
@@ -113,8 +112,7 @@ textarea.input-standard{ height:auto; min-height:70px; padding:8px 10px; resize:
 
 <header class="app-header">
   <div class="brand">
-    <img src="data:image/png;base64,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" alt="LOGO">
-    <span>R7 SERVIÇOS CONTÁBEIS E ADMINISTRATIVOS</span>
+       <span>R7 SERVIÇOS CONTÁBEIS E ADMINISTRATIVOS</span>
   </div>
 </header>
 
@@ -151,7 +149,7 @@ textarea.input-standard{ height:auto; min-height:70px; padding:8px 10px; resize:
           <div class="c-12">
             <label>HORÁRIO DE TRABALHO</label>
             <table class="horario-tabela">
-              <thead><tr><th>PERÍODO</th><th>ENTRADA</th><th>SAÍDA</th><th>INTERVALO</th></tr></thead>
+              <thead><tr><th>PERÍODO</th><th>ENTRADA</th><th>SAÍDA</th><th>INTERVALO (min)</th></tr></thead>
               <tbody>
                 <tr class="h-row" data-dia="SEG A SEX"><td>SEG A SEX</td><td><input type="time" class="input-standard h-ent"></td><td><input type="time" class="input-standard h-sai"></td><td><input type="text" class="input-standard h-int"></td></tr>
                 <tr class="h-row" data-dia="SÁBADO"><td>SÁBADO</td><td><input type="time" class="input-standard h-ent"></td><td><input type="time" class="input-standard h-sai"></td><td><input type="text" class="input-standard h-int"></td></tr>
@@ -188,7 +186,7 @@ textarea.input-standard{ height:auto; min-height:70px; padding:8px 10px; resize:
             <label>QUEM TOMOU A DECISÃO?</label>
             <select class="input-standard" id="des-motivo">
               <option value="O FUNCIONÁRIO PEDIU PARA SAIR">O FUNCIONÁRIO PEDIU PARA SAIR</option>
-              <option value="A EMPRESA DECIDIU DISPENSAR O FUNCIONÁRIO">A EMPRESA DECIDIU DISPENSAR O FUNCIONÁRIO</option>
+              <option value="A EMPRESA DECIDIU DISPENSAR O FUNCIONÁRIO">A EMPRESA DISPENSOU O FUNCIONÁRIO</option>
               <option value="A EMPRESA DISPENSOU POR JUSTA CAUSA (FALTA GRAVE)">A EMPRESA DISPENSOU POR JUSTA CAUSA (FALTA GRAVE)</option>
               <option value="FOI UM ACORDO ENTRE A EMPRESA E O FUNCIONÁRIO">FOI UM ACORDO ENTRE A EMPRESA E O FUNCIONÁRIO</option>
               <option value="TERMINOU O PERÍODO DE EXPERIÊNCIA">TERMINOU O PERÍODO DE EXPERIÊNCIA</option>
@@ -234,7 +232,7 @@ textarea.input-standard{ height:auto; min-height:70px; padding:8px 10px; resize:
 
   <div class="action-bar">
     <button type="button" class="btn" id="btn-limpar">LIMPAR TUDO</button>
-    <button type="button" class="btn btn-primary" id="btn-enviar">GERAR RESUMO EM MARKDOWN</button>
+    <button type="button" class="btn btn-primary" id="btn-enviar">GERAR RESUMO DA SOLICITAÇÃO</button>
   </div>
 </div>
 
@@ -245,7 +243,7 @@ textarea.input-standard{ height:auto; min-height:70px; padding:8px 10px; resize:
 
 <div class="modal-fundo" id="modal-resumo">
   <div class="modal-frame">
-    <div class="barra"><span>RESUMO EM MARKDOWN</span></div>
+    <div class="barra"><span>RESUMO DA SOLICITAÇÃO</span></div>
     <div class="modal-body">
       <textarea id="saida-texto" readonly></textarea>
       <div style="margin-top:15px; display:flex; gap:10px;">
@@ -291,63 +289,97 @@ function calcFerias() {
 document.getElementById("fer-inicio").addEventListener("change", calcFerias);
 document.getElementById("fer-dias").addEventListener("input", calcFerias);
 
-// GERAR RESUMO MARKDOWN
+// GERAR RESUMO PARA EMAIL
 document.getElementById("btn-enviar").addEventListener("click", () => {
   const getV = id => document.getElementById(id).value.toUpperCase();
   const getD = id => { const v = document.getElementById(id).value; if(!v) return ""; const [a,m,d] = v.split("-"); return `${d}/${m}/${a}`; };
   
-  let m = `# Solicitação de Departamento Pessoal - R7\n\n`;
-  m += `## Identificação\n`;
-  m += `- Empresa: ${getV('razao')}\n`;
-  m += `- CNPJ: ${getV('cnpj')}\n`;
-  m += `- Unidade: ${getV('unidade')}\n`;
-  m += `- Funcionário: ${getV('nome')} (Matrícula: ${getV('matricula')})\n`;
-  m += `- CPF: ${getV('cpf')}\n`;
-  m += `- Data Admissão: ${getD('data-adm')}\n\n`;
+  // Helper para adicionar linha apenas se houver valor
+  const addLinha = (label, val) => val && val.trim() !== '' ? `${label}: ${val}\n` : '';
+  
+  let txt = `SOLICITAÇÃO DE DEPARTAMENTO PESSOAL - R7 SERVIÇOS CONTÁBEIS\n\n`;
+  
+  txt += `IDENTIFICAÇÃO\n`;
+  txt += addLinha('Empresa', getV('razao'));
+  txt += addLinha('CNPJ', getV('cnpj'));
+  txt += addLinha('Unidade', getV('unidade'));
+  
+  const nome = getV('nome');
+  const mat = getV('matricula');
+  if(nome || mat) {
+    txt += `Funcionário: ${nome}${mat ? ' (Matrícula: ' + mat + ')' : ''}\n`;
+  }
+  
+  txt += addLinha('CPF', getV('cpf'));
+  txt += addLinha('Data de Admissão', getD('data-adm'));
+  txt += '\n';
   
   const aba = document.querySelector(".tab-btn.ativo").dataset.tab;
-  m += `## Tipo: ${aba.toUpperCase()}\n`;
   
   if(aba === "admissao") {
-    m += `- Cargo: ${getV('adm-cargo')}\n`;
-    m += `- Prazo Experiência: ${getV('adm-prazo')} dias\n`;
-    m += `\n### Horário de Trabalho\n`;
+    txt += `DETALHES DA ADMISSÃO\n`;
+    txt += addLinha('Cargo', getV('adm-cargo'));
+    txt += addLinha('Prazo de Experiência', getV('adm-prazo') ? getV('adm-prazo') + ' dias' : '');
+    
+    let temHorario = false;
+    let horariosTxt = '';
     document.querySelectorAll(".h-row").forEach(row => {
       const dia = row.dataset.dia;
       const ent = row.querySelector(".h-ent").value;
       const sai = row.querySelector(".h-sai").value;
-      const int = row.querySelector(".h-int").value.toUpperCase();
-      if(ent || sai) m += `- ${dia}: ${ent} às ${sai} (Intervalo: ${int})\n`;
+      let int = row.querySelector(".h-int").value;
+      if(ent || sai) {
+        temHorario = true;
+        int = int ? int + ' min' : 'Sem intervalo';
+        horariosTxt += `- ${dia}: ${ent} às ${sai} (${int})\n`;
+      }
     });
-    m += `\n### Documentos Entregues\n`;
+    if(temHorario) {
+      txt += `\nHorário de Trabalho:\n${horariosTxt}`;
+    }
+    
+    let docsTxt = '';
     document.querySelectorAll("#adm-docs input:checked").forEach(ck => {
-      m += `- [x] ${ck.value}\n`;
+      docsTxt += `- ${ck.value}\n`;
     });
-    m += `\n- Observações: ${getV('adm-obs')}\n`;
+    if(docsTxt) {
+      txt += `\nDocumentos Entregues:\n${docsTxt}`;
+    }
+    
+    txt += addLinha('\nObservações', getV('adm-obs'));
+    
   } else if(aba === "desligamento") {
-    m += `- Data do Aviso: ${getD('des-data-aviso')}\n`;
-    m += `- Último Dia Trabalhado: ${getD('des-ultimo-dia')}\n`;
-    m += `- Motivo: ${getV('des-motivo')}\n`;
-    m += `- Apontamentos: ${getV('des-apontamentos')}\n`;
-    m += `- Observações: ${getV('des-obs')}\n`;
+    txt += `DETALHES DO DESLIGAMENTO\n`;
+    txt += addLinha('Data do Aviso', getD('des-data-aviso'));
+    txt += addLinha('Último Dia Trabalhado', getD('des-ultimo-dia'));
+    txt += addLinha('Motivo', getV('des-motivo'));
+    txt += addLinha('Apontamentos', getV('des-apontamentos'));
+    txt += addLinha('Observações', getV('des-obs'));
+    
   } else if(aba === "ferias") {
-    m += `- Data Início: ${getD('fer-inicio')}\n`;
-    m += `- Dias: ${getV('fer-dias')}\n`;
-    m += `- Data Retorno: ${document.getElementById("fer-retorno").value}\n`;
-    m += `- Abono Pecuniário: ${document.querySelector('input[name="fer-abono"]:checked').value}\n`;
-    m += `- Observações: ${getV('fer-obs')}\n`;
+    txt += `SOLICITAÇÃO DE FÉRIAS\n`;
+    txt += addLinha('Data de Início', getD('fer-inicio'));
+    txt += addLinha('Quantidade de Dias', getV('fer-dias'));
+    txt += addLinha('Data de Retorno', document.getElementById("fer-retorno").value);
+    txt += addLinha('Abono Pecuniário', document.querySelector('input[name="fer-abono"]:checked').value);
+    txt += addLinha('Observações', getV('fer-obs'));
+    
   } else {
-    m += `- Detalhes: ${getV('outros-texto')}\n`;
+    txt += `OUTROS ASSUNTOS\n`;
+    txt += addLinha('Detalhes da Solicitação', getV('outros-texto'));
   }
 
-  document.getElementById("saida-texto").value = m;
+  txt += `\n--------------------------------------------------\n`;
+  txt += `Solicitação gerada em: ${new Date().toLocaleString('pt-BR')}\n`;
+
+  document.getElementById("saida-texto").value = txt;
   document.getElementById("modal-resumo").style.display = "flex";
 });
 
 document.getElementById("btn-copiar").addEventListener("click", () => {
   document.getElementById("saida-texto").select();
   document.execCommand("copy");
-  alert("MARKDOWN COPIADO!");
+  alert("TEXTO COPIADO!");
 });
 
 document.getElementById("btn-fechar").addEventListener("click", () => {
@@ -359,4 +391,3 @@ document.getElementById("btn-limpar").addEventListener("click", () => {
 });
 </script>
 </body>
-</html>
