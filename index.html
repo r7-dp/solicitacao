@@ -187,6 +187,9 @@ textarea.input-standard{ height:auto; min-height:80px; padding:12px 14px; resize
         <div class="c-3 stack"><label>Matrícula</label><input type="text" class="input-standard" id="matricula"></div>
         <div class="c-4 stack"><label>CPF (Opcional)</label><input type="text" class="input-standard mask-cpf" id="cpf" maxlength="14" placeholder="000.000.000-00"></div>
         <div class="c-5 stack"><label>Data de Admissão <span class="obrigatorio">*</span></label><input type="date" class="input-standard" id="data-adm"></div>
+
+        <!-- RESPONSÁVEL PELO PREENCHIMENTO -->
+        <div class="c-12 stack"><label>Solicitado por <span class="obrigatorio">*</span></label><input type="text" class="input-standard" id="solicitante" placeholder="Nome de quem está preenchendo esta solicitação"></div>
       </div>
     </div>
   </section>
@@ -393,14 +396,16 @@ document.getElementById("btn-enviar").addEventListener("click", () => {
 
   const campoNome = document.getElementById('nome');
   const campoData = document.getElementById('data-adm');
+  const campoSolicitante = document.getElementById('solicitante');
   let temErro = false;
   
   if(!getV('nome').trim()){ campoNome.classList.add('campo-invalido'); temErro = true; }
   if(!campoData.value){ campoData.classList.add('campo-invalido'); temErro = true; }
+  if(!getV('solicitante').trim()){ campoSolicitante.classList.add('campo-invalido'); temErro = true; }
   
   if(temErro){
     mostrarMsgStatus("PREENCHA OS CAMPOS OBRIGATÓRIOS (*) DESTACADOS EM VERMELHO.");
-    (getV('nome').trim() ? campoData : campoNome).focus();
+    (!getV('nome').trim() ? campoNome : (!campoData.value ? campoData : campoSolicitante)).focus();
     return;
   }
 
@@ -421,6 +426,7 @@ document.getElementById("btn-enviar").addEventListener("click", () => {
   
   txt += addLinha('CPF', getV('cpf'));
   txt += addLinha('Data de Admissão', getD('data-adm'));
+  txt += addLinha('Solicitado por', getV('solicitante'));
   txt += '\n';
   
   const aba = document.querySelector(".tab-btn.ativo").dataset.tab;
@@ -487,7 +493,7 @@ document.getElementById("btn-enviar").addEventListener("click", () => {
 });
 
 // Limpa o aviso de vermelho ao digitar
-['nome','data-adm'].forEach(id => {
+['nome','data-adm','solicitante'].forEach(id => {
   document.getElementById(id).addEventListener('input', function(){ this.classList.remove('campo-invalido'); });
 });
 
