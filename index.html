@@ -177,13 +177,16 @@ textarea.input-standard{ height:auto; min-height:80px; padding:12px 14px; resize
     <div class="group-box-bar">Identificação da Empresa e Funcionário</div>
     <div class="group-box-body">
       <div class="grid">
-        <div class="c-4 stack"><label>CNPJ</label><input type="text" class="input-standard mask-cnpj" id="cnpj"></div>
-        <div class="c-4 stack"><label>Razão Social</label><input type="text" class="input-standard" id="razao"></div>
+        <!-- DADOS DA EMPRESA -->
+        <div class="c-3 stack"><label>CNPJ</label><input type="text" class="input-standard mask-cnpj" id="cnpj" maxlength="18" placeholder="00.000.000/0000-00"></div>
+        <div class="c-5 stack"><label>Razão Social</label><input type="text" class="input-standard" id="razao"></div>
         <div class="c-4 stack"><label>Unidade</label><input type="text" class="input-standard" id="unidade"></div>
-        <div class="c-10 stack"><label>Nome do Funcionário <span class="obrigatorio">*</span></label><input type="text" class="input-standard" id="nome"></div>
-        <div class="c-2 stack"><label>Matrícula</label><input type="text" class="input-standard" id="matricula" style="font-size: 12px;"></div>
-        <div class="c-4 stack"><label>CPF (Opcional)</label><input type="text" class="input-standard mask-cpf" id="cpf"></div>
-        <div class="c-8 stack"><label>Data de Admissão <span class="obrigatorio">*</span></label><input type="date" class="input-standard" id="data-adm"></div>
+
+        <!-- DADOS DO FUNCIONÁRIO -->
+        <div class="c-12 stack"><label>Nome do Funcionário <span class="obrigatorio">*</span></label><input type="text" class="input-standard" id="nome"></div>
+        <div class="c-3 stack"><label>Matrícula</label><input type="text" class="input-standard" id="matricula"></div>
+        <div class="c-4 stack"><label>CPF (Opcional)</label><input type="text" class="input-standard mask-cpf" id="cpf" maxlength="14" placeholder="000.000.000-00"></div>
+        <div class="c-5 stack"><label>Data de Admissão <span class="obrigatorio">*</span></label><input type="date" class="input-standard" id="data-adm"></div>
       </div>
     </div>
   </section>
